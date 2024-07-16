@@ -13,7 +13,6 @@ nav:
     - First steps: getting-started/first-steps.md
     - Applications: getting-started/applications.md
     - Benchmarking: getting-started/benchmarking.md
-    - Advanced usage: getting-started/advanced-usage.md
     - Glossary: getting-started/glossary.md
   - How-to Guides:
     - how-to-guides/index.md
@@ -28,7 +27,6 @@ nav:
     - The Influence Function:
       - influence/index.md
       - Influence Function Model: influence/influence_function_model.md
-      - Scaling Computation: influence/scaling_computation.md
   - Tutorials:
     - tutorials/index.md
   - Examples:
@@ -52,7 +50,7 @@ nav:
       - api/development/index.md
       - API Reference: api/development/reference/
       - Changelog: changelog.md
-      - Development Guidelines: contributing.md
+      - Development Guidelines: development_guidelines.md
 
 watch:
   - src/pydvl
