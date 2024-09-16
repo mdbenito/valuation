@@ -30,6 +30,29 @@ pyDVL implements several methods for the efficient computation of the IF for
 machine learning. In the examples we document some of the difficulties that can
 arise when using the IF.
 
+We currently implement the following methods:
+
+- [**CG Influence**][pydvl.influence.torch.CgInfluence].
+  [@koh_understanding_2017].
+
+- [**Direct Influence**][pydvl.influence.torch.DirectInfluence]
+  [@koh_understanding_2017].
+
+- [**LiSSA**][pydvl.influence.torch.LissaInfluence]
+  [@agarwal_secondorder_2017].
+
+- [**Arnoldi Influence**][pydvl.influence.torch.ArnoldiInfluence]
+  [@schioppa_scaling_2022].
+
+- [**EKFAC Influence**][pydvl.influence.torch.EkfacInfluence]
+  [@george_fast_2018;@martens_optimizing_2015].
+
+- [**Nyström Influence**][pydvl.influence.torch.NystroemSketchInfluence], based
+  on the ideas in [@hataya_nystrom_2023] for bi-level optimization.
+
+- [**Inverse-harmonic-mean Influence**][pydvl.influence.torch.InverseHarmonicMeanInfluence]
+  [@kwon_datainf_2023].
+
 ## Construction
 
 First introduced in the context of robust statistics in [@hampel_influence_1974],

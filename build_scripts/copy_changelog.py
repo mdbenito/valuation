@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 root_dir = Path(__file__).parent.parent
 docs_dir = root_dir / "docs"
 changelog_file = root_dir / "CHANGELOG.md"
-target_filepath = docs_dir / changelog_file.name
+target_filepath = docs_dir / "changelog.md"
 
 
 @mkdocs.plugins.event_priority(100)

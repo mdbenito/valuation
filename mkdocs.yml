@@ -13,19 +13,24 @@ nav:
     - First steps: getting-started/first-steps.md
     - Applications: getting-started/applications.md
     - Benchmarking: getting-started/benchmarking.md
-    - Methods: getting-started/methods.md
     - Advanced usage: getting-started/advanced-usage.md
     - Glossary: getting-started/glossary.md
-  - Data Valuation:
-    - value/index.md
-    - Shapley values: value/shapley.md
-    - Semi-values: value/semi-values.md
-    - The Core: value/the-core.md
-    - Class-wise Shapley: value/classwise-shapley.md
-  - The Influence Function:
-    - influence/index.md
-    - Influence Function Model: influence/influence_function_model.md
-    - Scaling Computation: influence/scaling_computation.md
+  - How-to Guides:
+    - how-to-guides/index.md
+  - Methods:
+    - methods/index.md
+    - Data Valuation:
+      - value/index.md
+      - Shapley values: value/shapley.md
+      - Semi-values: value/semi-values.md
+      - The Core: value/the-core.md
+      - Class-wise Shapley: value/classwise-shapley.md
+    - The Influence Function:
+      - influence/index.md
+      - Influence Function Model: influence/influence_function_model.md
+      - Scaling Computation: influence/scaling_computation.md
+  - Tutorials:
+    - tutorials/index.md
   - Examples:
     - examples/index.md
     - Data Valuation:
@@ -36,14 +41,18 @@ nav:
         - Data OOB: examples/data_oob.ipynb
         - Banzhaf Semivalues: examples/msr_banzhaf_digits.ipynb
     - Influence Function:
-      - For CNNs: examples/influence_imagenet.ipynb
-      - For mislabeled data: examples/influence_synthetic.ipynb
-      - For outlier detection: examples/influence_wine.ipynb
-      - For language models: examples/influence_sentiment_analysis.ipynb
-  - Code:
-    - API Reference: api/pydvl/
-    - Changelog: CHANGELOG.md
-    - Development Guidelines: CONTRIBUTING.md
+        - For CNNs: examples/influence_imagenet.ipynb
+        - For mislabeled data: examples/influence_synthetic.ipynb
+        - For outlier detection: examples/influence_wine.ipynb
+        - For language models: examples/influence_sentiment_analysis.ipynb
+  - API:
+    - api/index.md
+    - User API: api/user-api/index.md
+    - Development:
+      - api/development/index.md
+      - API Reference: api/development/reference/
+      - Changelog: changelog.md
+      - Development Guidelines: contributing.md
 
 watch:
   - src/pydvl
@@ -134,8 +143,8 @@ plugins:
             show_root_full_path: true
             show_root_heading: true
   - bibtex:
-      bib_file: "docs/assets/pydvl.bib"
-      csl_file: "docs/assets/elsevier-harvard.csl"
+      bib_file: "docs/assets/bibliography/pydvl.bib"
+      csl_file: "docs/assets/bibliography/elsevier-harvard.csl"
       cite_inline: true
   - git-revision-date-localized:
       enable_creation_date: true
@@ -146,9 +155,9 @@ plugins:
 
 theme:
   name: material
-  custom_dir: docs/overrides
-  logo: assets/signet.svg
-  favicon: assets/signet.svg
+  custom_dir: docs/assets/overrides
+  logo: assets/images/signet.svg
+  favicon: assets/images/signet.svg
   icon:
     repo: fontawesome/brands/github
   features:
@@ -190,11 +199,11 @@ theme:
         name: Switch to system preference
 
 extra_css:
-  - css/extra.css
-  - css/grid-cards.css
+  - assets/css/extra.css
+  - assets/css/grid-cards.css
 
 extra_javascript:
-  - javascripts/mathjax.js
+  - assets/js/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 

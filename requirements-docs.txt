@@ -1,20 +1,18 @@
-griffe==0.42.1
-mike==2.0.0
+mkdocs==1.6.0
+mkdocs-material[imaging]==9.5.27
+mike==2.1.2
+griffe==0.47.0
 markdown-captions
-mkdocs==1.5.3
-mkdocstrings[python]>=0.24
-mkdocstrings-python==1.9.0
-# There is a bug in version 0.8.0 with type hints
-# https://github.com/aai-institute/pyDVL/actions/runs/8598810209/job/23560394768
-mkdocs-alias-plugin==0.7.1
+mkdocstrings[python]==0.25.1
+mkdocstrings-python==1.10.5
+mkdocs-alias-plugin==0.8.1
 mkdocs-autorefs==1.0.1
-mkdocs-bibtex==2.15.0
+mkdocs-bibtex==2.16.0
 mkdocs-gen-files
 mkdocs-git-revision-date-localized-plugin
 mkdocs-glightbox==0.3.7
 mkdocs-literate-nav
-mkdocs-material[imaging]==9.5.16
-mkdocs-section-index==0.3.8
+mkdocs-section-index==0.3.9
 mkdocs-macros-plugin
 mknotebooks==0.8.0
 pygments

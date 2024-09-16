@@ -5,6 +5,8 @@
 pydvl/*
 !pydvl/index.rst
 
-# Changelog
+# Files copied during documentation build
 CHANGELOG.md
+changelog.md
 CONTRIBUTING.md
+development_guidelines.md

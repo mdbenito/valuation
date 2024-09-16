@@ -50,6 +50,43 @@ influence-based and intrinsic. As of v0.8.1 pyDVL supports the first two. Here,
 we focus on game-theoretic concepts and refer to the main documentation on the
 [influence funtion][the-influence-function] for the second.
 
+We currently implement the following methods:
+
+- [**LOO**][pydvl.value.loo.compute_loo].
+
+- [**Permutation Shapley**][pydvl.value.shapley.montecarlo.permutation_montecarlo_shapley]
+  (also called **ApproxShapley**) [@castro_polynomial_2009].
+
+- [**TMCS**][pydvl.value.shapley.compute_shapley_values]
+  [@ghorbani_data_2019].
+
+- [**Data Banzhaf**][pydvl.value.semivalues.compute_banzhaf_semivalues]
+  [@wang_data_2022].
+
+- [**Beta Shapley**][pydvl.value.semivalues.compute_beta_shapley_semivalues]
+  [@kwon_beta_2022].
+
+- [**CS-Shapley**][pydvl.value.shapley.classwise.compute_classwise_shapley_values]
+  [@schoch_csshapley_2022].
+
+- [**Least Core**][pydvl.value.least_core.montecarlo.montecarlo_least_core]
+  [@yan_if_2021].
+
+- [**Owen Sampling**][pydvl.value.shapley.owen.owen_sampling_shapley]
+  [@okhrati_multilinear_2021].
+
+- [**Data Utility Learning**][pydvl.utils.utility.DataUtilityLearning]
+  [@wang_improving_2022].
+
+- [**kNN-Shapley**][pydvl.value.shapley.knn.knn_shapley]
+  [@jia_efficient_2019a].
+
+- [**Group Testing**][pydvl.value.shapley.gt.group_testing_shapley]
+  [@jia_efficient_2019]
+
+- [**Data-OOB**][pydvl.value.oob.compute_data_oob]
+  [@kwon_dataoob_2023].
+
 ## Game theoretical methods
 
 The main contenders in game-theoretic approaches are [Shapley

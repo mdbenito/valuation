@@ -18,42 +18,26 @@ If you're a first time user of pyDVL, we recommend you to go through
     [[getting-started|__Getting started__]]
 
     ---
-    Steps to install and requirements
+    New users of pyDVL should read this first.
+
+-   :fontawesome-solid-book-open:{ .lg .middle }
+    [[how-to-guides|__How-to Guides__]]
+
+    ---
+    Detailed instructions for specific and advanced tasks.
+
+-   :fontawesome-solid-book-atlas:{ .lg .middle }
+    [[methods|__Methods__]]
+
+    ---
+    Background information and explanations of data valuation
+    and influence function methods.
 
 -   :fontawesome-regular-images:{ .lg .middle }
-    [[examples|__Example gallery__]]
+    [[tutorials|__Tutorials__]]
     
     ---
-
-    Notebooks with worked-out examples of data valuation and influence functions
-
--   :fontawesome-solid-scale-unbalanced:{ .lg .middle }
-    [[data-valuation|__Data valuation__]]
-
-    ---
-
-    Basics of data valuation and description of the main algorithms
-
--   :fontawesome-solid-scale-unbalanced-flip:{ .lg .middle } 
-    [[influence-function|__Influence Function__]]
-
-    ---
-
-    An introduction to the influence function and its computation with pyDVL
-
--   :material-cog:{ .lg .middle }
-    [[methods|__Supported methods__]]
-
-    ---
-
-    List of all methods implemented with references.
-
-
--   :fontawesome-regular-file-code:{ .lg .middle }
-    [__API Reference__](api/pydvl/)
-
-    ---
-
-    Full documentation of the API
+    Worked-out examples of data valuation and influence function methods
+    showing how to do certain tasks using pyDVL.
 
 </div>
