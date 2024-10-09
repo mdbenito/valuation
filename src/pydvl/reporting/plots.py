@@ -10,7 +10,7 @@ from matplotlib.axes import Axes
 from numpy.typing import NDArray
 from scipy.stats import norm, t
 
-from pydvl.value import ValuationResult
+from pydvl.valuation.result import ValuationResult
 
 
 @deprecated(target=None, deprecated_in="0.7.1", remove_in="0.9.0")
@@ -104,7 +104,7 @@ def plot_ci_array(
     means = np.mean(data, axis=0)
     variances = np.var(data, axis=0, ddof=1)
 
-    dummy = ValuationResult[np.int_, np.object_](
+    dummy = ValuationResult(
         algorithm="dummy",
         values=means,
         variances=variances,

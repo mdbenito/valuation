@@ -1,11 +1,21 @@
 from pathlib import Path
-from typing import Any, Callable, Optional, Tuple
+from typing import Any, Callable, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
+from numpy.typing import NDArray
 from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
+
+from pydvl.valuation.dataset import Dataset
+
+__all__ = [
+    "load_spotify_dataset",
+    "load_wine_dataset",
+    "synthetic_classification_dataset",
+    "decision_boundary_fixed_variance_2d",
+]
 
 
 def load_spotify_dataset(
@@ -14,7 +24,7 @@ def load_spotify_dataset(
     min_year: int = 2014,
     target_column: str = "popularity",
     random_state: int = 24,
-):
+) -> Tuple[List[NDArray], List[NDArray], List[NDArray]]:
     """Loads (and downloads if not already cached) the spotify music dataset.
     More info on the dataset can be found at
     https://www.kaggle.com/datasets/mrmorj/dataset-of-songs-in-spotify.
@@ -22,12 +32,15 @@ def load_spotify_dataset(
     If this method is called within the CI pipeline, it will load a reduced
     version of the dataset for testing purposes.
 
-    :param val_size: size of the validation set
-    :param test_size: size of the test set
-    :param min_year: minimum year of the returned data
-    :param target_column: column to be returned as y (labels)
-    :param random_state: fixes sklearn random seed
-    :return: Tuple with 3 elements, each being a list sith [input_data, related_labels]
+    Args:
+        val_size: size of the validation set
+        test_size: size of the test set
+        min_year: minimum year of the returned data
+        target_column: column to be returned as y (labels)
+        random_state: fixes sklearn random seed
+
+    Returns:
+        Tuple with 3 elements, each of one of them is a list with [input_data, target_labels]
     """
     root_dir_path = Path(__file__).parent.parent.parent
     file_path = root_dir_path / "data/top_hits_spotify_dataset.csv"
@@ -42,25 +55,39 @@ def load_spotify_dataset(
     data["genre"] = data["genre"].astype("category").cat.codes
     y = data[target_column]
     X = data.drop(target_column, axis=1)
+
+    # Drop the 'song' column
+    X = X.drop(columns=["song"])
+
+    # Train, val, test splits
     X, X_test, y, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state
     )
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, test_size=val_size, random_state=random_state
     )
-    return [X_train, y_train], [X_val, y_val], [X_test, y_test]
+
+    return (
+        [X_train, y_train],
+        [X_val, y_val],
+        [X_test, y_test],
+    )
 
 
 def load_wine_dataset(
     train_size: float, test_size: float, random_state: Optional[int] = None
-):
+) -> Tuple[
+    Tuple[NDArray, NDArray], Tuple[NDArray, NDArray], Tuple[NDArray, NDArray], List[str]
+]:
     """Loads the sklearn wine dataset. More info can be found at
     https://scikit-learn.org/stable/datasets/toy_dataset.html#wine-recognition-dataset.
 
-    :param train_size: fraction of points used for training dataset
-    :param test_size: fraction of points used for test dataset
-    :param random_state: fix random seed. If None, no random seed is set.
-    :return: A tuple of four elements with the first three being input and
+    Args:
+        train_size: fraction of points used for training dataset
+        test_size: fraction of points used for test dataset
+        random_state: fix random seed. If None, no random seed is set.
+    Returns:
+        A tuple of four elements with the first three being input and
         target values in the form of matrices of shape (N,D) the first
         and (N,) the second. The fourth element is a list containing names of
         features of the model. (FIXME doc)
@@ -111,16 +138,19 @@ def synthetic_classification_dataset(
     train_size: float,
     test_size: float,
     random_seed=None,
-) -> Tuple[Tuple[Any, Any], Tuple[Any, Any], Tuple[Any, Any]]:
+) -> Tuple[Tuple[NDArray, NDArray], Tuple[NDArray, NDArray], Tuple[NDArray, NDArray]]:
     """Sample from a uniform Gaussian mixture model.
 
-    :param mus: 2d-matrix [CxD] with the means of the components in the rows.
-    :param sigma: Standard deviation of each dimension of each component.
-    :param num_samples: The number of samples to generate.
-    :param train_size: fraction of points used for training dataset
-    :param test_size: fraction of points used for test dataset
-    :param random_seed: fix random seed. If None, no random seed is set.
-    :returns: A tuple of matrix x of shape [NxD] and target vector y of shape [N].
+    Args:
+        mus: 2d-matrix [CxD] with the means of the components in the rows.
+        sigma: Standard deviation of each dimension of each component.
+        num_samples: The number of samples to generate.
+        train_size: fraction of points used for training dataset
+        test_size: fraction of points used for test dataset
+        random_seed: fix random seed. If None, no random seed is set.
+
+    Returns:
+        A tuple of matrix x of shape [NxD] and target vector y of shape [N].
     """
     num_features = mus.shape[1]
     num_classes = mus.shape[0]
@@ -145,13 +175,17 @@ def synthetic_classification_dataset(
 
 
 def decision_boundary_fixed_variance_2d(
-    mu_1: np.ndarray, mu_2: np.ndarray
-) -> Callable[[np.ndarray], np.ndarray]:
+    mu_1: NDArray, mu_2: NDArray
+) -> Callable[[NDArray], NDArray]:
     """
     Closed-form solution for decision boundary dot(a, b) + b = 0 with fixed variance.
-    :param mu_1: First mean.
-    :param mu_2: Second mean.
-    :returns: A callable which converts a continuous line (-infty, infty) to the decision boundary in feature space.
+
+    Args:
+        mu_1: First mean.
+        mu_2: Second mean.
+
+    Returns:
+        A callable which converts a continuous line (-infty, infty) to the decision boundary in feature space.
     """
     a = np.asarray([[0, 1], [-1, 0]]) @ (mu_2 - mu_1)
     b = (mu_1 + mu_2) / 2
